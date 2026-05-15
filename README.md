@@ -1,6 +1,6 @@
 <div align="center">
 
-# [Horizon Adaptive Offline Policy Learning via Value Stitching]()
+# [Horizon Adaptive Offline Policy Learning via <br>Value Stitching]()
 <img src="assets/value-stitching.png" width="100%">
 
 </div>
