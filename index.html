@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>VAST</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .video-container {
+      border: 2px solid #ccc;
+      border-radius: 15px;
+      padding: 5px;
+    }
+
+    video {
+      border-radius: 10px;
+    }
+
+    .always-visible {
+      display: block !important;
+      /* 强制始终可见 */
+    }
+
+    .custom-list {
+      list-style-type: disc;
+      /* 使用圆点 */
+      padding-left: 20px;
+      /* 添加左边距，使圆点和文本不重叠 */
+    }
+
+    .custom-list li {
+      font-size: 18px;
+      /* 设置字体大小 */
+      color: black;
+      /* 设置文本颜色 */
+    }
+
+    .left7container {
+      width: 60%;
+      padding: 20px;
+      box-sizing: border-box;
+      margin-left: 80px;
+      overflow: hidden;
+    }
+
+    .right3container {
+      width: 30%;
+      padding: 20px;
+      box-sizing: border-box;
+      margin-right: 30px;
+    }
+
+    .right3container img {
+      width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      /* 图片边框 */
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="utf-8">
+  <meta name="description" content="Horizon Adaptive Offline Policy Learning via Value Stitching">
+  <meta name="keywords"
+    content="Reinforcement Learning, Offline Reinforcement Learning, Value Learning, Horizon Adaptive, Diffusion Model, RL, AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horizon Adaptive Offline Policy Learning via Value Stitching</title>
+
+  <link rel="icon" href="./assets/img/icon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/button.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h2 class="subtitle is-3 publication-subtitle" style="font-size: 3rem;">
+              Horizon Adaptive Offline Policy Learning via
+            </h2>
+            <h1 class="title is-1 publication-title is-bold" style="font-size: 3rem;">
+              <span class="mmmu" style="vertical-align: middle; font-size: 1.6em; color: #E8445F;">
+                Value Stitching
+              </span>
+            </h1>
+            <br>
+          <div class="is-size-3 publication-authors">
+            <span class="author-block" style="margin-right: 10px;">
+              <a href="http://whiterrrrr.github.io/" style="color: inherit; text-decoration: none;">
+                Kexin Zheng<sup style="color:#1c8427;">1</sup>
+              </a>,
+            </span>
+            <span class="author-block" style="margin-right: 10px;">
+              <a href="https://zhanxianyuan.xyz/" style="color: inherit; text-decoration: none;">
+                Xianyuan Zhan<sup style="color:#007bff;">2†</sup>
+              </a>,
+            </span>
+            <span class="author-block" style="margin-right: 10px;">
+              <a href="https://www.civil.hku.hk/pp-yanxt.html" style="color: inherit; text-decoration: none;">
+                Xintao Yan<sup style="color:#1c8427;">1†</sup>
+              </a>
+            </span>
+          </div>
+            <!-- <br> -->
+
+            <div class="is-size-4 publication-authors">
+              <span class="author-block" style="margin-right: 24px;"><sup style="color:#1c8427;">1</sup> The University of Hong Kong</span>
+              <span class="author-block" style="margin-right: 24px;"><sup style="color:#007bff;">2</sup> Tsinghua University</span>
+              <span class="author-block" style="margin-right: 24px;">† Corresponding Author</span>
+            </div>
+            <br>
+
+
+            <div class="column has-text-centered">
+              <!-- <h1 class="title is-4 mmmu" style="margin-top: 2vh">Accepted by ICLR 2025</h1> -->
+              <div class="publication-links" style="display: flex; justify-content: center; gap: 40px; margin-top: 12px;">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2606.21136"
+                    class="external-link button is-medium  is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/Whiterrrrr/value-stitching"
+                    class="external-link button is-medium  is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+  </style>
+
+  <div class="container" style="margin-bottom: 1vh; margin-top: 0vh">
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-centered">
+        <img src="./assets/img/value-stitching.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1100px;">
+        <p style="font-size: 1.4rem;">
+          <b>Figure 1</b>: <i><b>VA</b>lue <b>ST</b>itching</i> (<b><i>VAST</i></b>)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered" style="margin-bottom: 2vh; margin-top: 2vh;">
+    <div class="column is-three-fifths" style="text-align: justify">
+      <p style="font-size: 1.4rem;">
+        <b><i>VAST</i></b> compositionally stitches cumulative returns between adaptive-lengths, actionable subgoals, thereby enhancing value learning optimality and stability.
+          <b>(Left)</b>: <i>VAST</i> leverages the horizon-based cumulative return (G-function) to measure the expected discounted return between two reachable states over a specific horizon, coupled with a stitching policy performing horizon-aware optimal sub-goal selection.
+          <b>(Right)</b>: <i>VAST</i> enables principled horizon adaptive value supervision guided by G-function with learnable backups.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container is-max-desktop" style="margin-bottom: 2vh;">
+      <div class="columns is-centered has-text-centered">
+        <div class="column" style="max-width: 1000px;">
+          <h2 class="title is-2">The ALL Behind <i>VAST</i></h2>
+          <div class="content has-text-justified">
+            <p style="font-size: 1.25rem;">
+              <b>The quintessence of RL lies in value.</b>
+              However, conventional temporal-difference (TD) learning objectives suffer from value-estimation bias that accumulates over the horizon, while extended-horizon modeling methods, such as n-step TD backups and chunking value, adopt a rigid, fixed-horizon value-modeling recipe that is often not flexible enough to capture complex value structures in long-horizon, multi-stage tasks.<br>
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            <p style="font-size: 1.25rem;">
+              <b>Human decision-making in real-world scenarios exhibits a high degree of dynamism and adaptability regarding credit assignment over task horizons.</b>
+              When planning for distant objectives, humans typically only conceptualize coarse-grained sub-goals with a rough estimate of horizon length (e.g., walk straight for about 100m and then turn right); while for immediate and critical decisions, they will focus exclusively on proximal, actionable consequences (e.g., decelerate and move left to avoid an obstacle). 
+              However, the truly adaptive and practically deployable mixed-horizon offline RL paradigms remain largely underexplored.
+            </p>
+          </div>
+        <div class="columns is-vcentered" style="margin-top: 2rem;">
+          <div class="column is-half">
+            <img src="./assets/img/toycase.png" alt="toycase"
+                 style="width: 90%; max-width: 400px; display: block; margin: 0 auto;">
+            <p style="font-size: 1.3rem;">
+              <b>Figure 2: 4x4 grid navigation.</b>
+            </p>
+          </div>
+          
+          <div class="column is-half">
+            <div style="font-size: 1.15rem; text-align: justify; line-height: 1.7;">
+              Central to the identified problem of fixed-horizon value-learning is that, while it may yield more robust value estimates, it is poorly suited to extracting policies for real-time, stepwise execution. 
+              When the backup sequence length is mismatched, crucial single-step signals can be washed out by sequence-level averaging, leading to the loss of precisely the information needed for accurate immediate decisions. 
+              <b>Toy example (Figure 2)</b> requiring navigation from the bottom-left to the top-right.
+              The data include sub-optimal paths only
+              (<span style="color:#4EB66A; font-weight:bold;">green path</span> and
+              <span style="color:#7030A0; font-weight:bold;">purple path</span>);
+              the environment is specified by
+              <span style="color:#8B0000; font-weight:bold;">dark red</span>,
+              <span style="color:#E57373; font-weight:bold;">light red</span>, and
+              <span style="color:#3D9BAD; font-weight:bold;">skull</span> blocks,
+              indicating high-, low-, and punitive-reward.
+              The <span style="color:#4A90E2; font-weight:bold;">depth of blue in blocks</span>
+              indicates the value estimates from fixed-step/chunked value backups, and the optimal stitching value.
+            </div>
+          </div>
+        </div>
+          <div class="content has-text-justified">
+            <p style="font-size: 1.25rem;">
+              Although deliberately simple, this toy example can be viewed as a local subproblem embedded within a much larger maze. 
+              It shows that while coupling value updates to a fixed horizon can better stabilize long-horizon learning scenarios, it simultaneously obscures critical short-range decisions, thereby trapping learning in poor local optima. 
+              Stability should not be bought at the cost of erasing decisive short-term signals, motivating adaptive horizon modeling that preserves both robustness and flexibility. Therefore:
+          </div>
+        <!-- <h2 class="title is-4"><i>How should the backup horizon be selected optimally?</i></h2> -->
+        <div class="content has-text-centered">
+          <img src="./assets/img/before-G.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+        </div>
+          <div class="content has-text-justified">
+            <p style="font-size: 1.25rem;">
+              Where the selection is required to be <i><b>Efficient</b>, <b>Effective</b>, <b>Adaptive</b>, and <b>Optimal</b></i>.
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h1 class="title is-1 mmmu">Methods</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Modeling Cumulative Return for Adaptive Horizon Length</h2>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            Addressing this question elegantly requires a more general operator, that can <i><b>evaluate the cumulative return</b></i> between <i><b>any pair of states under a dynamically chosen horizon</b></i>.
+          </p>
+          <!-- <br> -->
+
+          <div class="content has-text-centered">
+            <img src="./assets/img/G.png" alt="algebraic reasoning" class="center" style="width: 80%; max-width: 1200px;">
+          </div>
+          <br>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            This insight motivates the introduction of the <b>Horizon-Conditioned Cumulative Return (G-function)</b>:
+          </p>
+          
+          <div class="content has-text-centered">
+            <img src="./assets/img/G-definition.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+          </div>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            G defines a <b>value mapping relationship</b> between arbitrary k-step reachable state pairs and the policy-induced distribution. This formulation <b>breaks the dependence of value targets on fixed local backup segments</b> and <b>further supports flexible temporal composition across extended trajectory segments</b>:
+          </p>
+          <div class="content has-text-centered">
+            <img src="./assets/img/G-properties.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Horizon Adaptive Offline Policy Learning</h2>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            To inject G in the backup process, it is naturally further introduce the <b><i>stitching Bellman operator</i></b>. Repeatedly applying this operator on V will converge to a unique fixed point V*. It can be proved to be a 𝛾-contraction mapping.
+          </p>
+          <div class="content has-text-centered">
+            <img src="./assets/img/stitching-bellman-opr.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+          </div>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            The stitching Bellman operator offers a new way to bootstrap the value estimates based on the optimal horizon lengths and target states. Together there need a stitching policy that simultaneously selects the <b>best horizon k</b> for value stitching and the <b>reward-maximizing sub-goal</b>.
+          </p>
+          <div class="content has-text-centered">
+            <img src="./assets/img/stitching.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+          </div>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            It is sufficient to directly extract the execution policy from the learnt value function. In the established <i>VAST</i> implementation, we learn a goal-conditioned single-step policy and execute with rejection sampling.
+          </p>
+        </div>
+      </div>
+  </section>
+
+  <!-- RESULTS SECTION -->
+  <section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h1 class="title is-1 mmmu">Experiments</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <p style="font-size: 1.4rem; text-align: justify;">
+            <i>VAST</i> is evaluated on state-based tasks on OGBench (w/ singletask variant for offline RL) over 10 domains (6x basic domains + 7x hard domains), in total of 50 tasks.
+            We report average success rate over 8 seeds at 1M gradient steps.
+            We select 8 baselines for comprehensive evaluation, which could be categorized into value learning methods with one-step / multi-step TD, chunking, and generative value.
+          </p>
+          <br>
+          <div class="content has-text-centered">
+            <img src="./assets/img/env_common.png" alt="algebraic reasoning" class="center" style="width: 65%; max-width: 1200px;">
+            <br>
+            <p style="font-size: 1.3rem;"><b>Figure 3: OGBench Basic.</b> 
+              <br>
+              <br>
+          </div>
+            
+            <div class="content has-text-centered">
+              <img src="./assets/img/env_challenge.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
+              <br>
+            <p style="font-size: 1.3rem;"><b>Figure 4: OGBench Challenge.</b> 
+            </p>
+          </div>
+          <br>
+            
+          <h2 class="title is-3">Main Results</h2>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            <i>VAST</i> achieves the best or near-best performance in both domain-wise averages and the overall score, with particularly gains on manipulation domains such as <i>scene</i>, <i>cube</i>, and <i>puzzle</i>. 
+            <i>VAST</i> is also the strongest method across all <i>Hard</i> domains, achieving an overall score that is <b>2.5x</b> higher than the best baseline.
+          </p>
+          <br>
+          <div class="content has-text-centered">
+            <img src="./assets/img/main-result.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <p style="font-size: 1.2rem;"><b>Table 1: OGBench Results.</b> 
+              We report the aggregate score on all single tasks for each category, averaging over 8 random seeds. 
+              <i>VAST</i> achieves the best or near-best performance against other baselines across 10 domains, 50 tasks in total.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Learning Curves</h2>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            <b>Figure 5</b> shows the offline learning curves in puzzle-4x4-play (<i>Top</i>), cube-double-play (<i>Middle</i>), and cube-triple-play (<i>Bottom</i>).
+            <i>VAST</i> outperforms competing methods on most tasks, and its sustained upward trend in the <i>Hard</i> setting further highlights its scalability.
+          </p>
+          <br>
+          <div class="content has-text-centered">
+            <img src="./assets/img/legend.png" alt="algebraic reasoning" class="center" style="width: 70%; max-width: 800px;">
+            <img src="./assets/img/p44-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
+            <img src="./assets/img/cd-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
+            <img src="./assets/img/ct-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
+            <p style="font-size: 1.4rem;"><b>Figure 5: Learning Curves.</b> 
+            </p>
+          </div>
+            
+          <div style="font-size: 1.4rem; text-align: justify;">
+            <i>VAST</i> has the ability to effectively exploit dataset transitions, and scale to long-horizon decision-making.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <!-- Section Title -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" style="margin-bottom: 30px;">Qualitative Performance</h2>
+          <p style="font-size: 1.4rem; text-align: justify;">
+            We visualize the ground-truth trajectory together with the future states predicted by <i>VAST</i> in <b>Figure 6</b>. 
+            The predicted horizon follows a plausible sequence of phased atomic intentions, suggesting that the policy selects an effective intermediate target and thereby progresses toward stable, value-maximizing actions.
+          </p>
+          <br>
+          <div class="content has-text-centered">
+            <img src="./assets/img/vis.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <p style="font-size: 1.4rem;">
+              <b>Figure 6: Visualization on cube-triple-play-task3 (pop_from_stuck).</b> The solid robot arm shows the current pose, while the transparent arm shows the sub-goal.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre style="font-size: 1.1rem;"><code>
+        @article{zheng2026vast,
+          title = {Horizon Adaptive Offline Policy Learning via Value Stitching},
+          author = {Kexin Zheng and Xianyuan Zhan and Xintao Yan},
+          year = {2026},
+          journal = {arXiv preprint arXiv:2606.21136}
+        }
+      </code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is website adapted from <a href="https://mmmu-benchmark.github.io/">MMMU</a>, licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+<script>let currentSlide = 0;
+
+  //  <!-- zjl revise here!!!!! -->
+  const slide_length = [0, 6, 10, 16, 20]
+  const slideContainer = document.getElementById('slider-container');
+  const slides = slideContainer.children;
+  const dots = document.querySelectorAll('#slider-dots button');
+  const totalSlides = slides.length;
+  function updateSlider(animate = true) {
+    const slideWidth = slides[0].offsetWidth + 16;
+    const offset = currentSlide * slideWidth;
+
+    if (animate) {
+      slideContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    } else {
+      slideContainer.style.transition = 'none';
+    }
+
+    slideContainer.style.transform = `translateX(-${offset}px)`;
+
+    dots.forEach((dot, index) => {
+      dot.style.backgroundColor = (slide_length[index] <= currentSlide & currentSlide < slide_length[index + 1]) ? '#4F46E5' : '#D1D5DB';
+    });
+  }
+  function slideLeft() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlider();
+    } else {
+      // Optional: Bounce effect when at the start
+      slideContainer.style.transform = `translateX(20px)`;
+      setTimeout(() => {
+        slideContainer.style.transform = `translateX(0px)`;
+      }, 150);
+    }
+  }
+  function slideRight() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlider();
+    } else {
+      // Optional: Bounce effect when at the end
+      const maxOffset = (totalSlides - 1) * (slides[0].offsetWidth + 16);
+      slideContainer.style.transform = `translateX(-${maxOffset - 20}px)`;
+      setTimeout(() => {
+        slideContainer.style.transform = `translateX(-${maxOffset}px)`;
+      }, 150);
+    }
+  }
+  function handleTouchStart(e) {
+    const touch = e.touches[0];
+    window.touchStartX = touch.clientX;
+    window.touchStartY = touch.clientY;
+    slideContainer.style.transition = 'none';
+  }
+  function handleTouchMove(e) {
+    if (!window.touchStartX) return;
+
+    const touch = e.touches[0];
+    const diffX = touch.clientX - window.touchStartX;
+    const diffY = touch.clientY - window.touchStartY;
+
+    // If vertical scrolling is dominant, don't slide
+    if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+    e.preventDefault();
+    const slideWidth = slides[0].offsetWidth + 16;
+    const currentOffset = -(currentSlide * slideWidth);
+    const newOffset = currentOffset + diffX;
+
+    slideContainer.style.transform = `translateX(${newOffset}px)`;
+  }
+  function handleTouchEnd(e) {
+    if (!window.touchStartX) return;
+
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - window.touchStartX;
+
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0 && currentSlide > 0) {
+        slideLeft();
+      } else if (diffX < 0 && currentSlide < totalSlides - 1) {
+        slideRight();
+      } else {
+        updateSlider();
+      }
+    } else {
+      updateSlider();
+    }
+
+    window.touchStartX = null;
+    window.touchStartY = null;
+  }
+  // Add touch events
+  slideContainer.addEventListener('touchstart', handleTouchStart);
+  slideContainer.addEventListener('touchmove', handleTouchMove);
+  slideContainer.addEventListener('touchend', handleTouchEnd);
+  // Add click event listeners to buttons
+  const leftButton = document.getElementById('id-88');
+  const rightButton = document.getElementById('id-90');
+  if (leftButton) leftButton.addEventListener('click', slideLeft);
+  if (rightButton) rightButton.addEventListener('click', slideRight);
+  // Add click events to dots
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = slide_length[index];
+      updateSlider();
+    });
+  });
+  // Initialize slider
+  document.addEventListener('DOMContentLoaded', () => {
+    updateSlider(false);
+  });
+  // Update on window resize with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => updateSlider(false), 100);
+  });</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoContainers = document.querySelectorAll('.video-container');
+    const videoButtons = document.querySelectorAll('.video-switch-btn');
+    const imageContainers = document.querySelectorAll('.image-container');
+    const imageButtons = document.querySelectorAll('.image-switch-btn');
+
+    // 显示相应组的内容并更新按钮颜色
+    function showGroup(groupNumber, containers, buttons) {
+        containers.forEach(container => {
+            if (container.classList.contains(`group-${groupNumber}`)) {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+
+        buttons.forEach(btn => {
+            if (btn.dataset.group === groupNumber.toString()) {
+                btn.classList.add('bg-custom', 'text-white'); // 设置选中的按钮样式
+                btn.classList.remove('bg-white');
+            } else {
+                btn.classList.remove('bg-custom', 'text-white'); // 移除非选中按钮的样式
+                btn.classList.add('bg-white');
+            }
+        });
+    }
+
+    // 为视频按钮添加点击事件
+    videoButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            showGroup(parseInt(btn.dataset.group), videoContainers, videoButtons);
+        });
+    });
+
+    // 为图片按钮添加点击事件
+    imageButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            showGroup(parseInt(btn.dataset.group), imageContainers, imageButtons);
+        });
+    });
+
+    // 初始化时默认显示第一组（组1）
+    showGroup(1, videoContainers, videoButtons);
+    showGroup(1, imageContainers, imageButtons);
+});
+
+</script>
