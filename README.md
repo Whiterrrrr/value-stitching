@@ -4,6 +4,7 @@
 ## [Paper](https://arxiv.org/abs/2606.21136) &emsp;[Project Page](https://whiterrrrr.github.io/value-stitching/)
 <img src="assets/value-stitching.png" width="100%">
 </div>
+
 This repository contains the official implementation of ***VAST*** (*Horizon Adaptive Offline Policy Learning via <u>**VA**</u>lue <u>**ST**</u>itching*) designed for long-horizon, complex offline RL tasks.
 
 ## Overview
