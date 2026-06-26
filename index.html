@@ -124,16 +124,16 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h2 class="subtitle is-3 publication-subtitle" style="font-size: 3rem;">
+            <h2 class="subtitle is-3 publication-subtitle" style="font-size: 2.2rem;">
               Horizon Adaptive Offline Policy Learning via
             </h2>
-            <h1 class="title is-1 publication-title is-bold" style="font-size: 3rem;">
+            <h1 class="title is-1 publication-title is-bold" style="font-size: 2.5rem;">
               <span class="mmmu" style="vertical-align: middle; font-size: 1.6em; color: #E8445F;">
                 Value Stitching
               </span>
             </h1>
             <br>
-          <div class="is-size-3 publication-authors">
+          <div class="is-size-4 publication-authors">
             <span class="author-block" style="margin-right: 10px;">
               <a href="http://whiterrrrr.github.io/" style="color: inherit; text-decoration: none;">
                 Kexin Zheng<sup style="color:#1c8427;">1</sup>
@@ -152,7 +152,7 @@
           </div>
             <!-- <br> -->
 
-            <div class="is-size-4 publication-authors">
+            <div class="is-size-5 publication-authors">
               <span class="author-block" style="margin-right: 24px;"><sup style="color:#1c8427;">1</sup> The University of Hong Kong</span>
               <span class="author-block" style="margin-right: 24px;"><sup style="color:#007bff;">2</sup> Tsinghua University</span>
               <span class="author-block" style="margin-right: 24px;">† Corresponding Author</span>
@@ -162,10 +162,10 @@
 
             <div class="column has-text-centered">
               <!-- <h1 class="title is-4 mmmu" style="margin-top: 2vh">Accepted by ICLR 2025</h1> -->
-              <div class="publication-links" style="display: flex; justify-content: center; gap: 40px; margin-top: 12px;">
+              <div class="publication-links" style="display: flex; justify-content: center; gap: 20px; margin-top: 8px;">
                 <span class="link-block">
                   <a href="https://arxiv.org/pdf/2606.21136"
-                    class="external-link button is-medium  is-rounded is-dark">
+                    class="external-link button is-small  is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
@@ -174,7 +174,7 @@
                 </span>
                 <span class="link-block">
                   <a href="https://github.com/Whiterrrrr/value-stitching"
-                    class="external-link button is-medium  is-rounded is-dark">
+                    class="external-link button is-small  is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
@@ -201,8 +201,8 @@
   <div class="container" style="margin-bottom: 1vh; margin-top: 0vh">
     <div class="columns is-centered has-text-centered">
       <div class="content has-text-centered">
-        <img src="./assets/img/value-stitching.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1100px;">
-        <p style="font-size: 1.4rem;">
+        <img src="./assets/img/value-stitching.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1000px;">
+        <p style="font-size: 1.2rem;">
           <b>Figure 1</b>: <i><b>VA</b>lue <b>ST</b>itching</i> (<b><i>VAST</i></b>)
         </p>
       </div>
@@ -211,7 +211,7 @@
 
   <div class="columns is-centered has-text-centered" style="margin-bottom: 2vh; margin-top: 2vh;">
     <div class="column is-three-fifths" style="text-align: justify">
-      <p style="font-size: 1.4rem;">
+      <p style="font-size: 1.2rem;">
         <b><i>VAST</i></b> compositionally stitches cumulative returns between adaptive-lengths, actionable subgoals, thereby enhancing value learning optimality and stability.
           <b>(Left)</b>: <i>VAST</i> leverages the horizon-based cumulative return (G-function) to measure the expected discounted return between two reachable states over a specific horizon, coupled with a stitching policy performing horizon-aware optimal sub-goal selection.
           <b>(Right)</b>: <i>VAST</i> enables principled horizon adaptive value supervision guided by G-function with learnable backups.
@@ -225,13 +225,13 @@
         <div class="column" style="max-width: 1000px;">
           <h2 class="title is-2">The ALL Behind <i>VAST</i></h2>
           <div class="content has-text-justified">
-            <p style="font-size: 1.25rem;">
+            <p style="font-size: 1.2rem;">
               <b>The quintessence of RL lies in value.</b>
               However, conventional temporal-difference (TD) learning objectives suffer from value-estimation bias that accumulates over the horizon, while extended-horizon modeling methods, such as n-step TD backups and chunking value, adopt a rigid, fixed-horizon value-modeling recipe that is often not flexible enough to capture complex value structures in long-horizon, multi-stage tasks.<br>
             </p>
           </div>
           <div class="content has-text-justified">
-            <p style="font-size: 1.25rem;">
+            <p style="font-size: 1.2rem;">
               <b>Human decision-making in real-world scenarios exhibits a high degree of dynamism and adaptability regarding credit assignment over task horizons.</b>
               When planning for distant objectives, humans typically only conceptualize coarse-grained sub-goals with a rough estimate of horizon length (e.g., walk straight for about 100m and then turn right); while for immediate and critical decisions, they will focus exclusively on proximal, actionable consequences (e.g., decelerate and move left to avoid an obstacle). 
               However, the truly adaptive and practically deployable mixed-horizon offline RL paradigms remain largely underexplored.
@@ -241,7 +241,7 @@
           <div class="column is-half">
             <img src="./assets/img/toycase.png" alt="toycase"
                  style="width: 90%; max-width: 400px; display: block; margin: 0 auto;">
-            <p style="font-size: 1.3rem;">
+            <p style="font-size: 1.2rem;">
               <b>Figure 2: 4x4 grid navigation.</b>
             </p>
           </div>
@@ -265,17 +265,17 @@
           </div>
         </div>
           <div class="content has-text-justified">
-            <p style="font-size: 1.25rem;">
+            <p style="font-size: 1.2rem;">
               Although deliberately simple, this toy example can be viewed as a local subproblem embedded within a much larger maze. 
               It shows that while coupling value updates to a fixed horizon can better stabilize long-horizon learning scenarios, it simultaneously obscures critical short-range decisions, thereby trapping learning in poor local optima. 
               Stability should not be bought at the cost of erasing decisive short-term signals, motivating adaptive horizon modeling that preserves both robustness and flexibility. Therefore:
           </div>
         <!-- <h2 class="title is-4"><i>How should the backup horizon be selected optimally?</i></h2> -->
         <div class="content has-text-centered">
-          <img src="./assets/img/before-G.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+          <img src="./assets/img/before-G.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
         </div>
           <div class="content has-text-justified">
-            <p style="font-size: 1.25rem;">
+            <p style="font-size: 1.2rem;">
               Where the selection is required to be <i><b>Efficient</b>, <b>Effective</b>, <b>Adaptive</b>, and <b>Optimal</b></i>.
           </div>
       </div>
@@ -293,27 +293,27 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Modeling Cumulative Return for Adaptive Horizon Length</h2>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             Addressing this question elegantly requires a more general operator, that can <i><b>evaluate the cumulative return</b></i> between <i><b>any pair of states under a dynamically chosen horizon</b></i>.
           </p>
           <!-- <br> -->
 
           <div class="content has-text-centered">
-            <img src="./assets/img/G.png" alt="algebraic reasoning" class="center" style="width: 80%; max-width: 1200px;">
+            <img src="./assets/img/G.png" alt="algebraic reasoning" class="center" style="width: 80%; max-width: 1000px;">
           </div>
           <br>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             This insight motivates the introduction of the <b>Horizon-Conditioned Cumulative Return (G-function)</b>:
           </p>
           
           <div class="content has-text-centered">
             <img src="./assets/img/G-definition.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
           </div>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             G defines a <b>value mapping relationship</b> between arbitrary k-step reachable state pairs and the policy-induced distribution. This formulation <b>breaks the dependence of value targets on fixed local backup segments</b> and <b>further supports flexible temporal composition across extended trajectory segments</b>:
           </p>
           <div class="content has-text-centered">
-            <img src="./assets/img/G-properties.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <img src="./assets/img/G-properties.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
           </div>
         </div>
       </div>
@@ -325,19 +325,19 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Horizon Adaptive Offline Policy Learning</h2>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             To inject G in the backup process, it is naturally further introduce the <b><i>stitching Bellman operator</i></b>. Repeatedly applying this operator on V will converge to a unique fixed point V*. It can be proved to be a 𝛾-contraction mapping.
           </p>
           <div class="content has-text-centered">
-            <img src="./assets/img/stitching-bellman-opr.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <img src="./assets/img/stitching-bellman-opr.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
           </div>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             The stitching Bellman operator offers a new way to bootstrap the value estimates based on the optimal horizon lengths and target states. Together there need a stitching policy that simultaneously selects the <b>best horizon k</b> for value stitching and the <b>reward-maximizing sub-goal</b>.
           </p>
           <div class="content has-text-centered">
-            <img src="./assets/img/stitching.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <img src="./assets/img/stitching.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
           </div>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             It is sufficient to directly extract the execution policy from the learnt value function. In the established <i>VAST</i> implementation, we learn a goal-conditioned single-step policy and execute with rejection sampling.
           </p>
         </div>
@@ -355,36 +355,36 @@
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             <i>VAST</i> is evaluated on state-based tasks on OGBench (w/ singletask variant for offline RL) over 10 domains (6x basic domains + 7x hard domains), in total of 50 tasks.
             We report average success rate over 8 seeds at 1M gradient steps.
             We select 8 baselines for comprehensive evaluation, which could be categorized into value learning methods with one-step / multi-step TD, chunking, and generative value.
           </p>
           <br>
           <div class="content has-text-centered">
-            <img src="./assets/img/env_common.png" alt="algebraic reasoning" class="center" style="width: 65%; max-width: 1200px;">
+            <img src="./assets/img/env_common.png" alt="algebraic reasoning" class="center" style="width: 65%; max-width: 1000px;">
             <br>
-            <p style="font-size: 1.3rem;"><b>Figure 3: OGBench Basic.</b> 
+            <p style="font-size: 1.2rem;"><b>Figure 3: OGBench Basic.</b> 
               <br>
               <br>
           </div>
             
             <div class="content has-text-centered">
-              <img src="./assets/img/env_challenge.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
+              <img src="./assets/img/env_challenge.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1000px;">
               <br>
-            <p style="font-size: 1.3rem;"><b>Figure 4: OGBench Challenge.</b> 
+            <p style="font-size: 1.2rem;"><b>Figure 4: OGBench Challenge.</b> 
             </p>
           </div>
           <br>
             
           <h2 class="title is-3">Main Results</h2>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             <i>VAST</i> achieves the best or near-best performance in both domain-wise averages and the overall score, with particularly gains on manipulation domains such as <i>scene</i>, <i>cube</i>, and <i>puzzle</i>. 
             <i>VAST</i> is also the strongest method across all <i>Hard</i> domains, achieving an overall score that is <b>2.5x</b> higher than the best baseline.
           </p>
           <br>
           <div class="content has-text-centered">
-            <img src="./assets/img/main-result.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
+            <img src="./assets/img/main-result.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
             <p style="font-size: 1.2rem;"><b>Table 1: OGBench Results.</b> 
               We report the aggregate score on all single tasks for each category, averaging over 8 random seeds. 
               <i>VAST</i> achieves the best or near-best performance against other baselines across 10 domains, 50 tasks in total.</p>
@@ -399,21 +399,21 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Learning Curves</h2>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             <b>Figure 5</b> shows the offline learning curves in puzzle-4x4-play (<i>Top</i>), cube-double-play (<i>Middle</i>), and cube-triple-play (<i>Bottom</i>).
             <i>VAST</i> outperforms competing methods on most tasks, and its sustained upward trend in the <i>Hard</i> setting further highlights its scalability.
           </p>
           <br>
           <div class="content has-text-centered">
             <img src="./assets/img/legend.png" alt="algebraic reasoning" class="center" style="width: 70%; max-width: 800px;">
-            <img src="./assets/img/p44-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
-            <img src="./assets/img/cd-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
-            <img src="./assets/img/ct-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1200px;">
-            <p style="font-size: 1.4rem;"><b>Figure 5: Learning Curves.</b> 
+            <img src="./assets/img/p44-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1000px;">
+            <img src="./assets/img/cd-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1000px;">
+            <img src="./assets/img/ct-all-tasks_curve.png" alt="algebraic reasoning" class="center" style="width: 90%; max-width: 1000px;">
+            <p style="font-size: 1.2rem;"><b>Figure 5: Learning Curves.</b> 
             </p>
           </div>
             
-          <div style="font-size: 1.4rem; text-align: justify;">
+          <div style="font-size: 1.2rem; text-align: justify;">
             <i>VAST</i> has the ability to effectively exploit dataset transitions, and scale to long-horizon decision-making.
           </div>
         </div>
@@ -428,14 +428,14 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3" style="margin-bottom: 30px;">Qualitative Performance</h2>
-          <p style="font-size: 1.4rem; text-align: justify;">
+          <p style="font-size: 1.2rem; text-align: justify;">
             We visualize the ground-truth trajectory together with the future states predicted by <i>VAST</i> in <b>Figure 6</b>. 
             The predicted horizon follows a plausible sequence of phased atomic intentions, suggesting that the policy selects an effective intermediate target and thereby progresses toward stable, value-maximizing actions.
           </p>
           <br>
           <div class="content has-text-centered">
-            <img src="./assets/img/vis.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1200px;">
-            <p style="font-size: 1.4rem;">
+            <img src="./assets/img/vis.png" alt="algebraic reasoning" class="center" style="width: 100%; max-width: 1000px;">
+            <p style="font-size: 1.2rem;">
               <b>Figure 6: Visualization on cube-triple-play-task3 (pop_from_stuck).</b> The solid robot arm shows the current pose, while the transparent arm shows the sub-goal.
             </p>
           </div>
@@ -446,7 +446,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title is-3 has-text-centered">BibTeX</h2>
-      <pre style="font-size: 1.1rem;"><code>
+      <pre style="font-size: 1.rem;"><code>
         @article{zheng2026vast,
           title = {Horizon Adaptive Offline Policy Learning via Value Stitching},
           author = {Kexin Zheng and Xianyuan Zhan and Xintao Yan},
