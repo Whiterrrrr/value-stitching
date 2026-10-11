@@ -1,0 +1,17 @@
+__pycache__/
+dist/
+*.py[cod]
+*$py.class
+*.egg-info/
+.DS_Store
+.idea/
+.ruff_cache/
+.vscode
+
+# Local runs, checkpoints, videos, and machine-specific scripts.
+exp/
+videos/
+wandb/
+*.pkl
+*.mp4
+*.sh
