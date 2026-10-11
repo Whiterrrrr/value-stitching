@@ -80,3 +80,6 @@ To reproduce the paper, use the following hyperparameters:
 
 ## Acknowledgments
 This codebase is built on top of [SHARSA](https://github.com/seohongpark/horizon-reduction). We thank the research community for all contributions from prior studies.
+
+## License
+This project is licensed under the MIT License.
